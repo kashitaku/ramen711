@@ -5,15 +5,14 @@
 
 user page
 https://jyu-suke.com/ramen711/public/
-
 admin page
 https://jyu-suke.com/ramen711/public/admin
 
 <div>
  <h3>デモアカウント(user/admin 共通）</h3>
- メールアドレス:test_user@test.com<br>
- パスワード:CbNxTZsH2ptP<br>
- トップページからテストユーザーボタンでもログインできます。
+  メールアドレス:test_user@test.com<br>
+  パスワード:CbNxTZsH2ptP<br>
+  トップページからテストユーザーボタンでもログインできます。
 </div>
 
 <h2>機能と使用技術</h2>
