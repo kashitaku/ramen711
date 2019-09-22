@@ -4,7 +4,7 @@
 ラーメン好きなユーザー向けラーメン屋シェアサイト。
 
 user page
-https://jyu-suke.com/ramen711/public/
+https://jyu-suke.com/ramen711/public/<br>
 admin page
 https://jyu-suke.com/ramen711/public/admin
 
@@ -12,11 +12,12 @@ https://jyu-suke.com/ramen711/public/admin
  <h3>デモアカウント(user/admin 共通）</h3>
   メールアドレス:test_user@test.com<br>
   パスワード:CbNxTZsH2ptP<br>
-  トップページからテストユーザーボタンでもログインできます。
+  各ログインページからテストユーザーボタンでもログインできます。
 </div>
 
 <h2>機能と使用技術</h2>
 <ul>
+<li>新規店舗登録・編集・削除</li>
 <li>画像アップロード</li>
 <li>ページネーション</li>
 <li>店名・駅名検索</li>
