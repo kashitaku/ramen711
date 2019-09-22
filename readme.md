@@ -9,18 +9,22 @@ https://jyu-suke.com/ramen711/public/
 admin page
 https://jyu-suke.com/ramen711/public/admin
 
+<div>
 デモアカウント(user/admin 共通）
 メールアドレス:test_user@test.com
 パスワード:CbNxTZsH2ptP
 トップページからテストユーザーボタンでもログインできます。
+</div>
 
 <h2>機能と使用技術</h2>
-画像アップロード
-ページネーション
-店名・駅名検索
-デザイン(Bootstrap4)
-ログイン認証機能
-いいね機能
+<ul>
+<li>画像アップロード</li>
+<li>ページネーション</li>
+<li>店名・駅名検索</li>
+<li>デザイン(Bootstrap4)</li>
+<li>ログイン認証機能</li>
+<li>いいね機能</li>
+</ul>
 
 <h2>環境</h2>
 <ul>
@@ -31,7 +35,4 @@ https://jyu-suke.com/ramen711/public/admin
 <li>本番環境　ConoHa　VPSサーバー</li>
 <li>管理Git</li> 
 <li>その他</li>
- LINE Developers:https://developers.line.biz/ja/
- <br>
- ぐるなびAPI:https://api.gnavi.co.jp/api/
 </ul>
