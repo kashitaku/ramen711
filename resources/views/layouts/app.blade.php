@@ -7,7 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
@@ -39,7 +38,7 @@
                     <ul class="nav navbar-nav">
 						<form class="form_serch form-inline" action="{{route('shop.index')}}">
 							<input type="text" name="keyword" placeholder="店名または駅名を入力">
-							<button type="submit" class="btn btn-primary">検索</button>
+							<button type="submit" class="btn btn-primary">探す</button>
 						</form>
                     </ul>
 				@endif
