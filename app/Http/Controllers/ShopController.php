@@ -11,18 +11,18 @@ class ShopController extends Controller {
 	}
 	public function index(Request $request) {
 		$keyword = $request->input('keyword');
-		if(!empty($keyword)) {
+		if (!empty($keyword)) {
 			$query = Shop::query();
 			$query->where('name', 'like', '%'.$keyword.'%')->orWhere('station1', 'like', '%'.$keyword.'%');
 			$shops = $query->paginate(8);
-		} elseif (!empty($sort)) {
-			if($request->sort == 'likeDesc') {
-				$query = Shop::query();
-				$query->orderBy('likes_count', 'desc')->get(); 
-				$shops = $query->paginate(8);
-			}
 		} else {
 			$shops = Shop::paginate(8);
+		}
+		if (!empty($request->sort)) {
+			if ($request->sort == 'likeDesc') {
+				$query->Shop::orderBy('likes_count', 'desc')->get(); 
+				$shops = $query->paginate(8);
+			}
 		}
 		return view('shop.index', ['shops'=>$shops]);
 	}

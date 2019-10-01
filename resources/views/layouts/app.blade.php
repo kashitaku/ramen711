@@ -41,15 +41,17 @@
 							<button type="submit" class="btn btn-primary">探す</button>
 						</form>
                     </ul>
+<!--
                     <ul class="nav navbar-nav">
 						<form name="sort" action="{{route('shop.index')}}" method="post">
 						  {{ csrf_field() }} 
-							<select name="sort">
+							<select id="sort" name="sort">
 							<option value=""> 並び替え</option>
-							<option value="likeDesc"> いいねが多い順</option>
+							<option value="likeDesc" {{$sortBy=='likeDesc'?'selected':''}}> いいねが多い順</option>
 							</select>
 						</form>
                     </ul>
+--!>
 				@endif
 
                     <!-- Right Side Of Navbar -->
