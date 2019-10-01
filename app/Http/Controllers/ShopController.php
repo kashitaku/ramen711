@@ -1,5 +1,4 @@
 <?php
-
 namespace app\Http\Controllers;
 use Illuminate\Http\Request;
 use app\Http\Requests;
@@ -16,6 +15,12 @@ class ShopController extends Controller {
 			$query = Shop::query();
 			$query->where('name', 'like', '%'.$keyword.'%')->orWhere('station1', 'like', '%'.$keyword.'%');
 			$shops = $query->paginate(8);
+		} elseif (!empty($sort)) {
+			if($request->sort == 'likeDesc') {
+				$query = Shop::query();
+				$query->orderBy('likes_count', 'desc')->get(); 
+				$shops = $query->paginate(8);
+			}
 		} else {
 			$shops = Shop::paginate(8);
 		}
