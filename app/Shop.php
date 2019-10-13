@@ -18,8 +18,11 @@ class shop extends Model {
 		'URL' => 'required|url',
 		'image_url' => 'file|image|mimes:jpeg,jpg,png',
 	);
+	public function admin() {
+		return $this->belongsTo('app\Admin');
+	}
 	public function user() {
-		return $this->belongsTo(User::class);
+		return $this->belongsTo('User::class');
 	}
 	public function likes() {
 		return $this->hasMany('app\Like');

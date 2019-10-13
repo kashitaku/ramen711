@@ -19,7 +19,6 @@
 							<form action="" method="post" enctype="multipart/form-data">
 							<table>
 								{{ csrf_field() }}
-								<input type="hidden" name="id" value="{{$shop->id}}">
 								@if ($shop->image_url == null)
 								<tr><th>imege</th><td><div class="detail"><img src ="../../../storage/shop_images/no_image.png"></div></td></tr>
 								@else

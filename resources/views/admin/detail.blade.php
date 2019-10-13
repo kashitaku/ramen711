@@ -30,14 +30,16 @@ $(function() {
 								<p>name:{{$shop->name}}</p>
 								<p>point:{{$shop->point}}</p>
 								<p>likes_count:{{$shop->likes_count}}</p>
-								<form action ="{{route('admin.shop.edit', [$shop->id])}}" method="get">
-									{{ csrf_field() }}
-									<button type="submit" class="btn btn-primary btn-sm">編集</button>
-								</form>
-								<form action ="{{route('admin.shop.delete', [$shop->id])}}" method="post">
-									{{ csrf_field() }}
-									<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
-								</form>
+								@if ($shop->admin_id === Auth::user()->id)
+									<form action ="{{route('admin.shop.edit', [$shop->id])}}" method="get">
+										{{ csrf_field() }}
+										<button type="submit" class="btn btn-primary btn-sm">編集</button>
+									</form>
+									<form action ="{{route('admin.shop.delete', [$shop->id])}}" method="post">
+										{{ csrf_field() }}
+										<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
+									</form>
+								@endif
 							</div>
 						</ul>
 					</div>

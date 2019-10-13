@@ -37,10 +37,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
 						<form class="form_serch form-inline" action="{{route('shop.index')}}">
-							<input type="text" name="keyword" placeholder="店名または駅名を入力">
+							{{ csrf_field() }}
+							<input type="text" name="keyword" value="{{old('keyword')}}" placeholder="店名または駅名を入力">
 							<select name="sort">
 								<option value=""> 並び替え</option>
-								<option value="likeDesc"> いいねが多い順</option>
+								<option value="likeDesc" @if (old('sort')=="likeDesc") selected @endif> いいねが多い順</option>
 							</select>
 							<button type="submit" class="btn btn-primary">探す</button>
 						</form>

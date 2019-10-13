@@ -21,6 +21,7 @@
 			<div class="panel-body">
 				<table border=l>
 					<tr>
+					<th>editor</th>
 					<th>name</th>
 					<th>edit</th>
 					<th>station</th>
@@ -29,18 +30,21 @@
 					</tr>
 					@foreach ($shops as $shop)
 					<tr>
+					<td>{{$shop->admin->name}}</td>
 					<td><a href ="{{route('admin.shop.detail', [$shop->id])}}">{{$shop->name}}</td>
 					<td>
-						<div class="edit_delete">
-							<form action ="{{route('admin.shop.edit', [$shop->id])}}" method="get">
-								{{ csrf_field() }}
-								<button type="submit" class="btn btn-primary btn-sm">編集</button>
-							</form>
-							<form action ="{{route('admin.shop.delete', [$shop->id])}}" method="post">
-								{{ csrf_field() }}
-								<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
-							</form>
-						</div>
+						@if ($shop->admin_id === Auth::user()->id)
+							<div class="edit_delete">
+								<form action ="{{route('admin.shop.edit', [$shop->id])}}" method="get">
+									{{ csrf_field() }}
+									<button type="submit" class="btn btn-primary btn-sm">編集</button>
+								</form>
+								<form action ="{{route('admin.shop.delete', [$shop->id])}}" method="post">
+									{{ csrf_field() }}
+									<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
+								</form>
+							</div>
+						@endif
 					</td>
 					<td>{{$shop->station1}}</td>
 					<td>{{$shop->point}}</td>

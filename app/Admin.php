@@ -10,6 +10,10 @@ class Admin extends Authenticatable
     use Notifiable;
 	protected $guard = 'admin';
 
+	public function shop() {
+		return $this->hasMany('app\Shop');
+	}
+
     /**
      * The attributes that are mass assignable.
      *

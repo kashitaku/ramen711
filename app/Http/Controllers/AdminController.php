@@ -13,6 +13,9 @@ class AdminController extends Controller {
     {
         $this->middleware('auth:admin');
     }
+	public function admin() {
+		return $this->belongsTo('app\Admin');
+	}
 
     /**
      * Show the application dashboard.
@@ -37,15 +40,14 @@ class AdminController extends Controller {
 		$this->validate($request, Shop::$rules);
 		$shop=new Shop;
 		if($request->has('image_url')){
-			$shop->name = $request->name;
-			$shop->station1 = $request->station1;
-			$shop->point = $request->point;
-			$shop->type1 = $request->type1;
-			$shop->URL = $request->URL;
+			$form=$request->except('admin_id', 'image_url');
+			$shop->admin_id = $request->user()->id;
 			$shop->image_url = $request->image_url->storeAs('public/shop_images', rand());
-			$shop->save();
+			$shop->admin_id = $request->user()->id;
+			$shop->fill($form)->save();
 		} else {
-			$form=$request->except('image_url');
+			$form=$request->except('admin_id');
+			$shop->admin_id = $request->user()->id;
 			$shop->fill($form)->save();
 		}
 		return redirect()->route('admin.index');
@@ -67,17 +69,20 @@ class AdminController extends Controller {
 	public function update(Request $request, $id) {
 		$this->validate($request, Shop::$rules);
 		$shop=Shop::find($request->id);
-		if($request->has('image_url')){
-			$shop->name = $request->name;
-			$shop->station1 = $request->station1;
-			$shop->point = $request->point;
-			$shop->type1 = $request->type1;
-			$shop->URL = $request->URL;
-			$shop->image_url = $request->image_url->storeAs('public/shop_images', rand());
-			$shop->save();
-		} else {
-			$form=$request->except('image_url');
-			$shop->fill($form)->save();
+		if ($request->user()->id == $shop->admin_id) {
+			if($request->has('image_url')){
+				$shop->id = $request->id;
+				$shop->name = $request->name;
+				$shop->station1 = $request->station1;
+				$shop->point = $request->point;
+				$shop->type1 = $request->type1;
+				$shop->URL = $request->URL;
+				$shop->image_url = $request->image_url->storeAs('public/shop_images', rand());
+				$shop->save();
+			} else {
+				$form=$request->except('image_url');
+				$shop->fill($form)->save();
+			}
 		}
 		return redirect()->route('admin.index');
 	}
