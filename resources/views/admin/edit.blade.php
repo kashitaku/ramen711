@@ -25,11 +25,11 @@
 								<tr><th>imege</th><td><div class="detail"><img src ="../../../{{$shop->image_url}}"></div></td></tr>
 								@endif
 								<tr><th></th><td><input type="file" name="image_url"></td><tr>
-								<tr><th>name:</th><td><input type="text" name="name" value="{{$shop->name}}"></td></tr>
-								<tr><th>point:</th><td><input type="text" name="point" value="{{$shop->point}}"></td></tr>
-								<tr><th>station1:</th><td><input type="text" name="station1" value="{{$shop->station1}}"></td></tr>
-								<tr><th>type1:</th><td><input type="text" name="type1" value="{{$shop->type1}}"></td></tr>
-								<tr><th>URL:</th><td><input type="text" name="URL" value="{{$shop->URL}}"></td></tr>
+								<tr><th>name:</th><td><input type="text" name="name" value="{{old('name', $shop->name)}}"></td></tr>
+								<tr><th>point:</th><td><input type="text" name="point" value="{{old('point', $shop->point)}}"></td></tr>
+								<tr><th>station1:</th><td><input type="text" name="station1" value="{{old('station1', $shop->station1)}}"></td></tr>
+								<tr><th>type1:</th><td><input type="text" name="type1" value="{{old('type1', $shop->type1)}}"></td></tr>
+								<tr><th>URL:</th><td><input type="text" name="URL" value="{{old('URL', $shop->URL)}}"></td></tr>
 								<tr><th></th><td><button type="submit" class="btn btn-primary">更新</button></td></tr>
 							</table>
 							</form>
