@@ -11,22 +11,27 @@ class ShopController extends Controller {
 	}
 	public function index(Request $request) {
 		$keyword = $request->input('keyword');
-		if (!empty($keyword) && $request->sort == 'likeDesc') {
-			$query = Shop::query();
-			$query->where('name', 'like', '%'.$keyword.'%')->orWhere('station1', 'like', '%'.$keyword.'%')->orderBy('likes_count', 'desc')->get();
-			$shops = $query->paginate(8);
-		} elseif (!empty($keyword)) {
-			$query = Shop::query();
-			$query->where('name', 'like', '%'.$keyword.'%')->orWhere('station1', 'like', '%'.$keyword.'%');
-			$shops = $query->paginate(8);
-		} elseif ($request->sort == 'likeDesc') {
-			$query = Shop::query();
-			$query->orderBy('likes_count', 'desc')->get(); 
-			$shops = $query->paginate(8);
-		} else {
-			$shops = Shop::paginate(8);
+		$keyword_station = $request->input('keyword_station');
+		$sort = $request->sort;
+		$query = Shop::query();
+		if ($keyword || $keyword_station || $sort) {
+			if ($keyword) {
+				$query->where('name', 'like', '%'.$keyword.'%')->get();
+			}
+			if ($keyword_station) {
+				$query->where('name', 'like', '%'.$keyword_station.'%')->get();
+			}
+			if ($sort) {
+				$query->orderBy('likes_count', 'Desc')->get();
+			}
 		}
-		return view('shop.index', ['shops'=>$shops]);
+			$shops = $query->paginate(8)
+			->appends($request->only(['keyword', 'keyword_station', 'sort']));
+		return view('shop.index')
+			->with('keyword', $keyword)
+			->with('keyword_station', $keyword_station)
+			->with('sort', $sort)
+			->with('shops', $shops);
 	}
 	public function detail(Request $request, $id) {
 		$shop = Shop::findOrFail($id);

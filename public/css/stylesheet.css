@@ -4,7 +4,15 @@ margin:0;
 padding:0;
 }
 input {
-  width:300px;
+  width:450px;
+  border-radius:5px;
+}
+input.checkbox {
+  width:10px;
+  display:inline;
+}
+.form_serch {
+  margin:5px;
 }
 .form_serch input {
   margin:5px;
@@ -129,18 +137,18 @@ footer {
 /* レスポンシブ　768px以下の場合 */
 @media screen and (max-width:767px) {
   .conA h1 {     
-  	padding: 5px;
-  	font-size: 30px;
-  	top:80px;
+    padding: 5px;
+    font-size: 30px;
+    top:80px;
   }
   .box-list a {
     font-size:100%;
   }
   .form_serch button {
-  	margin-left:10px;
+    margin-left:10px;
   }
   .heart_part button {
-  	width:70%;
+    width:70%;
   }
   .lineBot_part .img-part img{
   	width:45%;

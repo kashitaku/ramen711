@@ -9,6 +9,14 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<ul class="box-list">
+			<form class="form_serch form-inline" action="{{route('shop.index')}}">
+				<input type="text" name="keyword" value="{{$keyword}}" placeholder="店名を入力">
+				<input type="text" name="keyword_station" value="{{$keyword_station}}" placeholder="駅名を入力">
+				<div>
+					<input class="checkbox" type="checkbox" name="sort" value="likeDesc" @if ($sort==="likeDesc") checked @endif><label for="likeDesc">いいね順</label>
+				</div>
+				<button type="submit" class="btn btn-primary">検索</button>
+			</form>
 			@foreach ($shops as $shop)
 				<li>
 				<div class="indexImage">
@@ -28,14 +36,14 @@
 	</div>
 	<div class="lineBot_part">
 		<div class="container">
-		<div class="text-part">
-			<h3>\ Line bot 友達登録はこちら /</h3>
-			<p>ラーメン博士がLineBotでおすすめのラーメン屋さんを紹介してくれるよ。</p>
-			<p><small>「駅名」や「位置情報」送信してね。</small></p>
-		</div>
-		<div class="img-part">
-			<img src="storage/shop_images/ramen711QR.png">
-		</div>
+			<div class="text-part">
+				<h3>\ Line bot 友達登録はこちら /</h3>
+				<p>ラーメン博士がLineBotでおすすめのラーメン屋さんを紹介してくれるよ。</p>
+				<p><small>「駅名」や「位置情報」送信してね。</small></p>
+			</div>
+			<div class="img-part">
+				<img src="storage/shop_images/ramen711QR.png">
+			</div>
 		</div>
 	</div>
 </div>

@@ -11,12 +11,16 @@ input {
   width:500px;
   border-radius:5px;
 }
+input {
+  width:450px;
+  border-radius:5px;
+}
 input.checkbox {
   width:10px;
+  display:inline;
 }
-.form_serch input {
-  margin:5px 5px 20px;
-  padding:10px 15px;
+.form_serch {
+  margin:5px;
 }
 .form_serch input {
   margin:5px;
