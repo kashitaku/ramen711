@@ -24,14 +24,28 @@ class AdminController extends Controller {
      */
 	public function index(Request $request) {
 		$keyword = $request->input('keyword');
-		if(!empty($keyword)) {
-			$query = Shop::query();
-			$query->where('name', 'like', '%'.$keyword.'%')->orWhere('station1', 'like', '%'.$keyword.'%');
-			$shops = $query->get();
-		} else {
-			$shops = Shop::all();
+		$keyword_station = $request->input('keyword_station');
+		$sort = $request->sort;
+		$query = Shop::query();
+		if($keyword || $keyword_station || $sort) {
+			if ($keyword) {
+				$query->where('name', 'like', '%'.$keyword.'%')->get();
+			}
+			if ($keyword_station) {
+				$query->where('name', 'like', '%'.$keyword_station.'%')->get();
+			}
+			
+			if ($sort == 'likeDesc') {
+				$query->orderBy('likes_count', 'desc')->get();
+			}
 		}
-		return view('admin.index', ['shops'=>$shops]);
+		$shops = $query->paginate(8)
+			->appends($request->only(['keyword', 'keyword_station', 'sort']));
+		return view('admin.index')
+			->with('keyword', $keyword)
+			->with('keyword_station', $keyword_station)
+			->with('sort', $sort)
+			->with('shops', $shops);
     }
 	public function add(Request $request) {
 		return view('admin.add');

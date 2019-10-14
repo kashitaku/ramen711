@@ -9,6 +9,14 @@ body {
 }
 input {
   width:500px;
+  border-radius:5px;
+}
+input.checkbox {
+  width:10px;
+}
+.form_serch input {
+  margin:5px 5px 20px;
+  padding:10px 15px;
 }
 .form_serch input {
   margin:5px;

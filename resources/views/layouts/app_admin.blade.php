@@ -38,10 +38,6 @@
 				@if (!Auth::guest())
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-						<form class="form_serch form-inline" action="{{route('admin.index')}}">
-							<input type="text" name="keyword" placeholder="店名または駅名を入力">
-							<button type="submit" class="btn btn-primary">検索</button>
-						</form>
                     </ul>
 				@endif
 

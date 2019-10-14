@@ -19,6 +19,12 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">店舗一覧</div>
 			<div class="panel-body">
+			<form class="form_serch form-inline" action="{{route('admin.index')}}">
+				<input type="text" name="keyword" value="{{$keyword}}" placeholder="店名を入力">
+				<input type="text" name="keyword_station" value="{{$keyword_station}}" placeholder="駅名を入力">
+				<input class="checkbox" type="checkbox" name="sort" value="likeDesc" @if ($sort==="likeDesc") checked @endif><label for="likeDesc">いいね順</label>
+				<button type="submit" class="btn btn-primary">検索</button>
+			</form>
 				<table border=l>
 					<tr>
 					<th>editor</th>
@@ -53,6 +59,8 @@
 						@endforeach
 					</table>
 				</div>
+				{{ $shops->links() }}
+
 			</div>
 		<div>
 			<a class="move_page btn btn-primary" href ="{{route('admin.shop.add')}}" role="button">新規店舗登録</a>
