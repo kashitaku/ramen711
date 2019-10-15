@@ -23,6 +23,11 @@ Route::get('/shop/detail/{id}', 'ShopController@detail')->name('shop.detail');
 Route::post('/shop/like/{shop}',  'LikesController@store')->name('shop.like.store');
 Route::post('/shop/like/{shop}/{like}',  'LikesController@destroy')->name('shop.like.destroy');
 
+Route::get('/user/', 'UserController@index')->name('user.index');
+Route::get('/user/detail/{id}', 'UserController@detail')->name('user.detail');
+Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
+Route::post('/user/edit/{id}', 'UserController@update')->name('user.update');
+
 Route::prefix('admin')->group(function() {
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

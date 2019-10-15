@@ -66,16 +66,25 @@ ul li:last-child{
   color:#f24e3abd;
   font-size:80%;
   position:absolute;
-  top:10px;
+  top:20px;
   left:0;
   width:100%;
   height:100%;
   z-index: 2; 
   text-decoration:none;
 }
+.user_box-list a {
+  top:190px;
+}
 .indexImage img{
   height:250px;  
-  width: 100%;
+  width:100%;
+}
+.user_indexImage img {
+    height:200px;
+    width:80%;
+    margin:5px;
+    border-radius:50%;
 }
 .box-list li:hover {
   font-weight:bold;
@@ -85,8 +94,8 @@ ul li:last-child{
   font-weight:bold;
 }
 .box-list li:active {
-  border-bottom: solid 2px #fd9535;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  border-bottom:solid 2px #fd9535;
+  box-shadow:0 0 2px rgba(0, 0, 0, 0.30);
 }
 .lineBot_part .container {
   display:flex;
@@ -142,7 +151,10 @@ footer {
     top:80px;
   }
   .box-list a {
-    font-size:100%;
+    font-size:80%;
+  }
+  input {
+    width:250px;
   }
   .form_serch button {
     margin-left:10px;

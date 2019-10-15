@@ -14,15 +14,19 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [
+		'id', 'role', 'remember_token', 'created_at', 'updated_at',
     ];
 
-	public static $rules = array(
+	public static $rules = [
 		'name' => 'required',
 		'email' => 'required', 'email',
 		'password' => 'required', 
-		);
+	];
+
+	public static $rules_update = [
+		'image_url' => 'file|image|mimes:jpeg,jpg,png',
+	];
 
     /**
      * The attributes that should be hidden for arrays.

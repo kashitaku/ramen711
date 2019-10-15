@@ -46,7 +46,7 @@ class AdminController extends Controller {
 			->with('keyword_station', $keyword_station)
 			->with('sort', $sort)
 			->with('shops', $shops);
-    }
+	}
 	public function add(Request $request) {
 		return view('admin.add');
 	}

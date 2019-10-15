@@ -144,9 +144,9 @@ footer {
 
 /* レスポンシブ　768px以下の場合 */
 @media screen and (max-width:767px) {
-	input {
-	  width:250px;
-	}
+  input {
+    width:300px;
+  }
   .conA h1 {     
   	padding: 5px;
   	font-size: 30px;

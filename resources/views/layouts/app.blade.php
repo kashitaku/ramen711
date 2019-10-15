@@ -36,6 +36,7 @@
 				@if (!Auth::guest())
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        <li><a href="{{ route('user.index') }}">ユーザー一覧</a></li>
                     </ul>
 				@endif
 
