@@ -34,7 +34,7 @@
 					<th>edit</th>
 					<th>station</th>
 					<th>point</th>
-					<th>likes_count</th>
+					<th>likes</th>
 					</tr>
 					@foreach ($shops as $shop)
 					<tr>

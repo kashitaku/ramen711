@@ -8,10 +8,6 @@ body {
     background-color: rgba(221, 126, 105, 0.47);
 }
 input {
-  width:500px;
-  border-radius:5px;
-}
-input {
   width:450px;
   border-radius:5px;
 }
@@ -29,6 +25,12 @@ input.checkbox {
 .admin_user_chg { 
   Margin :5px;
   padding: 10px 15px;
+}
+.btn {
+  margin:5px;
+}
+.navbar {
+  margin-bottom:0;
 }
 .conA {
   background-image:url(../storage/shop_images/background_img.jpg);
@@ -145,7 +147,7 @@ footer {
 /* レスポンシブ　768px以下の場合 */
 @media screen and (max-width:767px) {
   input {
-    width:300px;
+    width:250px;
   }
   .conA h1 {     
   	padding: 5px;
@@ -157,6 +159,9 @@ footer {
   }
   .form_serch button {
   	margin-left:10px;
+  }
+  .detail img {
+    width:90%;
   }
   .heart_part button {
   	width:70%;
