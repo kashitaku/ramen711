@@ -8,7 +8,7 @@
                 <div class="panel-heading">店舗詳細</div>
                 <div class="panel-body">
 					<div class="box-list">
-						<div class="detail">
+						<div class="detail_ramen">
 							@if($shop->image_url == null)
 								<img src="../../storage/shop_images/no_image.png">
 							@else
@@ -40,7 +40,7 @@
 					</div>
                 </div>
             </div>
-			<a class="move_page btn btn-primary" href ="{{route('shop.index')}}" role="button">一覧ページへ</a>
+			<a class="move_page btn btn-primary" href ="{{route('shop.index')}}" role="button">ラーメン屋さん一覧ページへ</a>
         </div>
     </div>
 </div>

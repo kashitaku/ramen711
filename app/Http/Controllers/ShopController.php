@@ -3,6 +3,8 @@ namespace app\Http\Controllers;
 use Illuminate\Http\Request;
 use app\Http\Requests;
 use app\Shop;
+use app\User;
+use app\Like;
 use Auth;
 
 class ShopController extends Controller {
@@ -26,7 +28,7 @@ class ShopController extends Controller {
 			}
 		}
 			$shops = $query->paginate(8)
-			->appends($request->only(['keyword', 'keyword_station', 'sort']));
+				->appends($request->only(['keyword', 'keyword_station', 'sort']));
 		return view('shop.index')
 			->with('keyword', $keyword)
 			->with('keyword_station', $keyword_station)

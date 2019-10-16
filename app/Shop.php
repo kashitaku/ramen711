@@ -30,4 +30,7 @@ class shop extends Model {
 	public function like_by() {
 		return Like::where('user_id', Auth::user()->id)->first();
 	}
+	public function Shop() {
+		return $this->belongsToMany('app\User');
+	}
 }

@@ -131,10 +131,16 @@ ul li:last-child{
   background:#fccc91a8;
   padding:10px;
 }
-.detail img {
+.detail_ramen img {
   padding:5px;
-  height:auto;
-  width:100%;
+  height:400px;
+  width:auto;
+}
+.detail_user img {
+  padding:5px;
+  height:250px;
+  width:auto;
+  border-radius:50%;
 }
 footer {
   text-align:center;
@@ -165,8 +171,8 @@ footer {
   .form_serch button {
     margin-left:10px;
   }
-  .detail img {
-    width:90%;
+  .detail_ramen img {
+    height:250px;
   }
   .heart_part button {
     width:70%;

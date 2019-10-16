@@ -19,11 +19,14 @@
 							<form action="" method="post" enctype="multipart/form-data">
 							<table>
 								{{ csrf_field() }}
-								@if ($user->image_url == null)
-								<tr><th>imege</th><td><div class="detail"><img src ="../../storage/shop_images/no_image_user.jpg"></div></td></tr>
-								@else
-								<tr><th>imege</th><td><div class="detail"><img src ="../../{{$user->image_url}}"></div></td></tr>
-								@endif
+								<tr><th>imege</th>
+								<td><div class="detail_user">
+									@if ($user->image_url == null)
+										<img src ="../../storage/shop_images/no_image_user.jpg">
+									@else
+										<img src ="../../{{$user->image_url}}">
+									@endif
+								</div></td></tr>
 								<tr><th></th><td><input type="file" name="image_url"></td><tr>
 								<tr><th>name:</th><td>{{ $user->name }}</td></tr>
 								<tr><th>email:</th><td>{{ $user->email }}</td></tr>

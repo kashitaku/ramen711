@@ -1,9 +1,9 @@
 <?php
 
 namespace app;
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use app\Shop;
 
 class User extends Authenticatable
 {
@@ -38,5 +38,8 @@ class User extends Authenticatable
     ];
 	public function likes() {
 		return $this->hasMany(Like::class);
+	}
+	public function User() {
+		return $this->belongsToMany('app\shop', 'likes');
 	}
 }

@@ -9,7 +9,14 @@ use Auth;
 use app\Shop;
 
 class LikesController extends Controller {
-	public function store(Request $requesr, $shopId) {
+	public function likes(Request $request, $id) {
+		$query = Shop::query();
+		$query->Shop()->where('user_id', Auth::user()->id)->get();
+		$shops = $query->paginate(8);
+		return view('user.likes')
+			->with('shops', $shops);
+	}
+	public function store(Request $request, $shopId) {
 		Like::create(
 			array(
 				'user_id' => Auth::user()->id,
@@ -24,6 +31,6 @@ class LikesController extends Controller {
 		$shop = Shop::findOrFail($shopId);
 		$shop->like_by()->findOrFail($likeId)->delete();
 		return redirect()
-		->action('ShopController@detail', $shop->id);
+			->action('ShopController@detail', $shop->id);
 	}
 }

@@ -19,7 +19,7 @@ $(function() {
                 <div class="panel-heading">店舗詳細</div>
 					<div class="panel-body">
 						<ul>
-							<div class="detail">
+							<div class="detail_ramen">
 								@if($shop->image_url == null)
 									<img src="../../../storage/shop_images/no_image.png">
 								@else
