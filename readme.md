@@ -31,7 +31,7 @@ https://jyu-suke.com/ramen711/public/admin
 <li>言語　PHP 7.2.18</li>
 <li>Apache 2.4.6</li>
 <li>DB　MySQL</li>
-<li>開発環境　CentOS 7.6.1810</li>
+<li>開発環境　Docker</li>
 <li>本番環境　ConoHa　VPSサーバー</li>
 <li>管理Git</li> 
 <li>その他</li>
