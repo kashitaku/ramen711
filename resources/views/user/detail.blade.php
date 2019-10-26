@@ -34,10 +34,8 @@
 				@endif
 			</div>
 			<ul class="box-list">
-				<h3>- いいねしたラーメン屋さん -</h3>
-				@if((count($shops) === 0))
-					<p>いいねしたラーメン屋さんはまだありません</p>
-				@else
+				<h3>- いいねしたラーメン屋さん {{count($shops)}}件 -</h3>
+				@if(($shops))
 					@foreach ($shops as $shop)
 						<li>
 						<div class="indexImage">
@@ -55,6 +53,25 @@
 				@endif
 			</ul>
 			{{ $shops->links() }}
+			<ul class="box-list">
+				<h3>- レビューしたラーメン屋さん {{count($reviews)}}件 -</h3>
+				@if(($reviews))
+					@foreach ($reviews as $review)
+						<li>
+						<div class="indexImage">
+							@if($review->image_url == null)
+								<img src="../../storage/shop_images/no_image.png">
+							@else
+								<img src="{{ str_replace('public/', '../../storage/', $review->image_url)}}">
+							@endif
+						</div>
+							<h2><a href ="{{route('shop.detail', [$review->shop_id])}}">{{$review->name}}</a></h2>
+							<small>{{$review->station1}}</small>
+						</li>
+					@endforeach
+				@endif
+			</ul>
+			{{ $reviews->links() }}
 			</div>
 		</div>
 		<a class="move_page btn btn-primary" href ="{{route('shop.index')}}" role="button">ラーメン屋さん一覧ページへ</a>

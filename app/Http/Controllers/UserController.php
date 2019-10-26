@@ -6,6 +6,7 @@ use app\Http\Requests;
 use app\User;
 use app\Like;
 use app\Shop;
+use app\Review;
 use Auth;
 
 class UserController extends Controller {
@@ -26,9 +27,13 @@ class UserController extends Controller {
 		$query = Shop::query();
 		$query->join('likes', 'shops.id', '=', 'likes.shop_id')->where('likes.user_id', $request->id)->get();
 		$shops = $query->paginate(8);
+      $query2 = Review::query();
+      $query2->join('shops', 'shop_id', '=', 'shops.id')->where('user_id', $id)->get();
+      $reviews = $query2->paginate(8);
 		return view('user.detail')
 			->with('user', $user)
-			->with('shops', $shops);
+			->with('shops', $shops)
+			->with('reviews', $reviews);
 	}
 	public function edit(Request $request) {
 		$user = user::find($request->user()->id);
