@@ -33,4 +33,7 @@ class shop extends Model {
 	public function Shop() {
 		return $this->belongsToMany('app\User');
 	}
+  public function reviews() {
+     return $this->hasMany(Review::class);
+  }
 }
