@@ -29,7 +29,7 @@ Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/edit/{id}', 'UserController@update')->name('user.update');
 
 Route::post('/shop/review/{id}', 'ReviewsController@store')->name('shop.review');
-Route::post('/shop/review/delete/{id}', 'ReviewsController@delete')->name('shop.review.delete');
+Route::post('/shop/review/delete/{id}/{shopId}', 'ReviewsController@delete')->name('shop.review.delete');
 
 Route::prefix('admin')->group(function() {
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

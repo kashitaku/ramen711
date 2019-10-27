@@ -28,8 +28,8 @@ class ShopController extends Controller {
 				$query->orderBy('likes_count', 'Desc')->get();
 			}
 		}
-			$shops = $query->paginate(8)
-				->appends($request->only(['keyword', 'keyword_station', 'sort']));
+		$shops = $query->paginate(8)
+			->appends($request->only(['keyword', 'keyword_station', 'sort']));
 		return view('shop.index')
 			->with('keyword', $keyword)
 			->with('keyword_station', $keyword_station)
