@@ -26,10 +26,12 @@ class UserController extends Controller {
 		}
 		$query = Shop::query();
 		$query->join('likes', 'shops.id', '=', 'likes.shop_id')->where('likes.user_id', $request->id)->get();
-		$shops = $query->paginate(8);
-      $query2 = Review::query();
-      $query2->join('shops', 'shop_id', '=', 'shops.id')->where('user_id', $id)->get();
-      $reviews = $query2->paginate(8);
+		$shops = $query->paginate(8, ["*"], 'shoppage')
+					->appends($request->only(['reviewpage']));
+		$query2 = Review::query();
+		$query2->join('shops', 'shop_id', '=', 'shops.id')->where('user_id', $id)->first();
+		$reviews = $query2->paginate(8 , ["*"], 'reviewpage')
+					->appends($request->only(['shoppage']));
 		return view('user.detail')
 			->with('user', $user)
 			->with('shops', $shops)

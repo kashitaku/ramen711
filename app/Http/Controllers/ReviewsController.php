@@ -20,8 +20,8 @@ class ReviewsController extends Controller {
       $review->save();
       return redirect()->back();
    }
-   public function delete($shopId) {
-      Review::where('shop_id', $shopId)->where('user_id', Auth::user()->id)->delete();
+   public function delete(Request $request, $shopId) {
+      Review::where('id', $request->id)->where('shop_id', $shopId)->where('user_id', Auth::user()->id)->delete();
       return redirect()->back();
    }
 }

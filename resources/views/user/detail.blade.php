@@ -34,7 +34,8 @@
 				@endif
 			</div>
 			<ul class="box-list">
-				<h3>- いいねしたラーメン屋さん {{count($shops)}}件 -</h3>
+				<h3>- いいねしたラーメン屋さん 計{{$shops->total()}}件-</h3>
+				<p>- {{count($shops)}}件表示-</h3>
 				@if(($shops))
 					@foreach ($shops as $shop)
 						<li>
@@ -54,22 +55,33 @@
 			</ul>
 			{{ $shops->links() }}
 			<ul class="box-list">
-				<h3>- レビューしたラーメン屋さん {{count($reviews)}}件 -</h3>
-				@if(($reviews))
-					@foreach ($reviews as $review)
-						<li>
-						<div class="indexImage">
+				<h3>- レビューしたラーメン屋さん　計{{($reviews->total())}}件 -</h3>
+				<p>- {{count($reviews)}}件表示-</h3>
+				@foreach ($reviews as $review)
+					<div class="card">
+						<div class="image_part detail_user">
 							@if($review->image_url == null)
 								<img src="../../storage/shop_images/no_image.png">
 							@else
-								<img src="{{ str_replace('public/', '../../storage/', $review->image_url)}}">
+							<img src="{{str_replace('public/', '../../storage/', $review->image_url)}}">
 							@endif
+							<small><a href="{{route('shop.detail', [$review->shop_id])}}">{{$review->name}}</a></small>
 						</div>
-							<h2><a href ="{{route('shop.detail', [$review->shop_id])}}">{{$review->name}}</a></h2>
-							<small>{{$review->station1}}</small>
-						</li>
-					@endforeach
-				@endif
+						<div class="text_part">
+							<p>{{$review->title}}</p>
+							<p>{{$review->review}}</p>
+							<small>{{$review->created_at}}</small>
+							@if (Auth::user()->id === $review->user_id)
+								<div class="edit_delete">
+									<form action ="{{route('shop.review.delete', [$review->shop_id])}}" method="post">
+										{{ csrf_field() }}
+										<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
+									</form>
+								</div>
+							 @endif
+						</div>
+					 </div>
+				@endforeach
 			</ul>
 			{{ $reviews->links() }}
 			</div>

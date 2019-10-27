@@ -40,10 +40,11 @@
 					</div>
          <div class="row">
             <div class="col-md-8 offset-md-2">
-            <h4>レビュー {{count($reviews)}}件</h4>
+            <h4> レビュー計 {{$reviews->total()}} 件</h4>
+            <p> {{count($reviews)}}件表示</p>
               @foreach ($reviews as $review)
                  <div class="card">
-                    <div class="image_part">
+                    <div class="image_part detail_user">
                         @if($review->image_url == null)
                            <img src="../../storage/user_images/no_image_user.jpg">
                         @else
@@ -56,26 +57,27 @@
                        <p>{{$review->review}}</p>
                        <small>{{$review->created_at}}</small>
                        @if (Auth::user()->id === $review->user_id)
-                     <div class="edit_delete">
-								<form action ="{{route('shop.review.delete', [$review->shop_id])}}" method="post">
-									{{ csrf_field() }}
-									<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
-								</form>
-							</div>
-                       @endif
-                    </div>
-                 </div>
-              @endforeach
-              @if (count($errors) >0 )
-                  <div>
-                     <ul>
-                        @foreach ($errors->all() as $error)
-                           <li>{{$error}}</li>
-                        @endforeach
-                     </ul>
-                  </div>
-					@endif
-                <form action="{{route('shop.review', [$shop->id])}}" method="post">
+						<div class="edit_delete">
+							<form action ="{{route('shop.review.delete', [$review->shop_id])}}" method="post">
+								{{ csrf_field() }}
+								<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
+							</form>
+						</div>
+						@endif
+					</div>
+				</div>
+				@endforeach
+				@if (count($errors) >0 )
+				<div>
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{$error}}</li>
+						@endforeach
+					</ul>
+				</div>
+				@endif
+				{{ $reviews->links() }}
+				<form action="{{route('shop.review', [$shop->id])}}" method="post">
                      {{ csrf_field() }}
                     <input type="text" name="title" value="{{old('title')}}" placeholder="タイトル(30文字以内)">  
                     <input type="text" name="review" value="{{old('review')}}" placeholder="レビュー(140文字以内)"> 

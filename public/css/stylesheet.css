@@ -87,10 +87,10 @@ ul li:last-child{
   width:100%;
 }
 .user_indexImage img {
-    height:200px;
-    width:80%;
-    margin:5px;
-    border-radius:50%;
+   height:200px;
+   width:80%;
+   margin:5px;
+   border-radius:50%;
 }
 .box-list li:hover {
   font-weight:bold;
@@ -124,6 +124,7 @@ ul li:last-child{
 .lineBot_part .text-part {
   flex:1;
 }
+/* shop detail  page */
 .heart_part button {
   height:auto;
   width:13%;
@@ -136,11 +137,44 @@ ul li:last-child{
   height:400px;
   width:auto;
 }
+.card {
+  width:80%;
+  margin:0 auto;
+  align-items: center;
+  display: flex;
+  border: 1px solid rgba(0,0,0,0.125);
+  border-radius: 0.25rem;
+}
+.text_part {
+ margin:10px;
+ padding:5px;
+ text-align:left;
+}
+.text_part p{
+ margin:1px;
+ padding:1px;
+}
+.card .detail_user {
+  text-align: center ;
+  margin:5px;
+  width:15%;
+}
+.card .detail_user img {
+  display:block ;
+  margin:0 auto;
+  width: 64px;
+  height: 64px;
+}
+
+/* user detail page */
 .detail_user img {
   padding:5px;
   height:250px;
   width:auto;
   border-radius:50%;
+}
+.card a{
+    position:static ;
 }
 footer {
   text-align:center;
