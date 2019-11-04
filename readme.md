@@ -3,10 +3,12 @@
 <h2>サービス概要</h2>
 ラーメン好きなユーザー向けラーメン屋シェアサイト。
 
-user page
+user page（ユーザーが利用する画面）
 https://jyu-suke.com/ramen711/public/<br>
-admin page
+admin page（管理者が利用する画面）
 https://jyu-suke.com/ramen711/public/admin
+
+現状、管理画面にログイン後に「管理者画面」⇄「ユーザー画面」それぞれ切替、閲覧できるようにしています。
 
 <div>
  <h3>デモアカウント(user/admin 共通）</h3>
@@ -23,6 +25,7 @@ https://jyu-suke.com/ramen711/public/admin
 <li>店名・駅名検索</li>
 <li>デザイン(Bootstrap4)</li>
 <li>ログイン認証機能</li>
+<li>レビュー機能</li>
 <li>いいね機能</li>
 </ul>
 
