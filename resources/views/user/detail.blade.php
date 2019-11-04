@@ -68,12 +68,13 @@
 							<small><a href="{{route('shop.detail', [$review->shop_id])}}">{{$review->name}}</a></small>
 						</div>
 						<div class="text_part">
+							<p>{{$review->id}}</p>
 							<p>{{$review->title}}</p>
 							<p>{{$review->review}}</p>
 							<small>{{$review->created_at}}</small>
 							@if (Auth::user()->id === $review->user_id)
 								<div class="edit_delete">
-									<form action ="{{route('shop.review.delete', [$review->shop_id])}}" method="post">
+									<form action ="{{route('shop.review.delete', [$review->id, $review->shop_id])}}" method="post">
 										{{ csrf_field() }}
 										<button type="submit" class="btn btn-warning btn-sm btn-dell">削除</button>
 									</form>

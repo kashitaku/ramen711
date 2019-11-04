@@ -39,13 +39,13 @@ class ShopController extends Controller {
 	public function detail(Request $request, $id) {
 		$shop = Shop::findOrFail($id);
 		$like = $shop->likes()->where('user_id', Auth::user()->id)->first();
-		$reviews = Review::where('shop_id', $id)->join('users', 'users.id', '=', 'reviews.user_id')->paginate(8);
+		$reviews = Review::select(['reviews.id', 'reviews.user_id', 'reviews.shop_id', 'reviews.title', 'reviews.review', 'reviews.created_at', 'users.name', 'users.image_url' ])->where('shop_id', $id)->join('users', 'users.id', '=', 'reviews.user_id')->paginate(8);
 		if($shop->image_url) {
 			$shop->image_url = str_replace('public/', 'storage/', $shop->image_url);
 		}
 		return view('shop.detail')
-       ->with('shop', $shop)
-       ->with('like',  $like)
-       ->with('reviews',  $reviews);
+		   ->with('shop', $shop)
+		   ->with('like',  $like)
+		   ->with('reviews',  $reviews);
   }
 }
