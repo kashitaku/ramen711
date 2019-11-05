@@ -68,7 +68,6 @@
 							<small><a href="{{route('shop.detail', [$review->shop_id])}}">{{$review->name}}</a></small>
 						</div>
 						<div class="text_part">
-							<p>{{$review->id}}</p>
 							<p>{{$review->title}}</p>
 							<p>{{$review->review}}</p>
 							<small>{{$review->created_at}}</small>
