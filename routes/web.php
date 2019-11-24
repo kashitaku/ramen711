@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//twitter login
+Route::get('/login/twitter', 'Auth\LoginController@redirectToProvider')->name('twitter.login');
+Route::get('/login/twitter/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('auth/twitter/logout', 'Auth\TwitterController@logout');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'ShopController@index')->name('shop.index');
 Route::get('/shop/detail/{id}', 'ShopController@detail')->name('shop.detail');

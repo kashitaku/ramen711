@@ -12,8 +12,10 @@
 			@foreach ($users as $user)
 				<li>
 				<div class="indexImage user_indexImage">
-					@if($user->image_url == null)
+					@if($user->image_url == null && $user->avatar == null)
 						<img src="storage/user_images/no_image_user.jpg"> 
+					@elseif($user->avatar)
+						<img src="{{$user->avatar}}">
 					@else
 						<img src="{{ str_replace('public/', 'storage/', $user->image_url)}}">
 					@endif
