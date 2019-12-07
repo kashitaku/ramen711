@@ -9,8 +9,8 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // $this->call(UsersTableSeeder::class);
+    public function run() {
+	$tags = ['しょう油', '塩', 'とんこつ', '味噌', 'つけ麺', 'その他'];
+	foreach ($tags as $tag) app\Tag::create(['name' => $tag]);
     }
 }

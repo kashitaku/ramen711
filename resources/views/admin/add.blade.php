@@ -24,6 +24,14 @@
 								<tr><th>station1:</th><td><input type="text" name="station1" value="{{old('station1')}}"></td></tr>
 								<tr><th>type1:</th><td><input type="text" name="type1" value="{{old('type1')}}"></td></tr>
 								<tr><th>URL:</th><td><input type="text" name="URL" value="{{old('URL')}}"></td></tr>
+                        <tr><th>category:</th>
+                           <td>
+                              @foreach ($tags as $tag)
+                                 <input class="checkbox" type="checkbox" name="tags[]" value="{{ $tag->id }}" 
+                                    @if (is_array(old("tags")) && in_array("$tag->id", old('tags'), true)) checked @endif > {{ $tag->name }}
+                              @endforeach
+                           </td>
+                        </tr>
 							</table>
 							image:<input type="file" name="image_url">
 							<button type="submit" class="btn btn-primary">登録</button>

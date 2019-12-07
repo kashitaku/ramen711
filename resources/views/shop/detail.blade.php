@@ -36,6 +36,7 @@
 								@endif
 							</div>
 						<small>{{$shop->station1}}</small>
+                     <p>@foreach ($shop->tags as $tag) #{{ $tag->name }} @endforeach</p> 
 						<p>{{$shop->point}}</p>
 					</div>
          <div class="row">
@@ -53,7 +54,6 @@
                        <small><a href="{{route('user.detail', [$review->user_id])}}">{{$review->name}}</a></small>
                     </div>
                     <div class="text_part">
-                       <p>{{$review->id}}</p>
                        <p>{{$review->title}}</p>
                        <p>{{$review->review}}</p>
                        <small>{{$review->created_at}}</small>

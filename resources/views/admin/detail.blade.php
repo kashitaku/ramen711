@@ -16,7 +16,7 @@ $(function() {
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">店舗詳細</div>
+                <div class="panel-heading">{{$shop->name}}</div>
 					<div class="panel-body">
 						<ul>
 							<div class="detail_ramen">
@@ -27,7 +27,7 @@ $(function() {
 								@endif
 							</div>
 							<div>
-								<p>name:{{$shop->name}}</p>
+                        <p>category:@foreach ($shop->tags as $category) @if ($category) {{ $category->name }} @endif  @endforeach </p>
 								<p>point:{{$shop->point}}</p>
 								<p>likes_count:{{$shop->likes_count}}</p>
 								@if ($shop->admin_id === Auth::user()->id)

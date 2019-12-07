@@ -2,6 +2,7 @@
 namespace app\Http\Controllers;
 use Illuminate\Http\Request;
 use app\Shop;
+use app\Tag;
 
 class AdminController extends Controller {
     /**
@@ -16,7 +17,6 @@ class AdminController extends Controller {
 	public function admin() {
 		return $this->belongsTo('app\Admin');
 	}
-
     /**
      * Show the application dashboard.
      *
@@ -48,21 +48,25 @@ class AdminController extends Controller {
 			->with('shops', $shops);
 	}
 	public function add(Request $request) {
-		return view('admin.add');
+      $tags = Tag::all();
+		return view('admin.add')
+         ->with('tags', $tags);
 	}
 	public function create(Request $request) {
 		$this->validate($request, Shop::$rules);
 		$shop=new Shop;
 		if($request->has('image_url')){
-			$form=$request->except('admin_id', 'image_url');
+			$form=$request->except('admin_id', 'image_url', 'tags');
 			$shop->admin_id = $request->user()->id;
 			$shop->image_url = $request->image_url->storeAs('public/shop_images', rand());
 			$shop->admin_id = $request->user()->id;
 			$shop->fill($form)->save();
+         $shop->tags()->attach(request()->tags);
 		} else {
-			$form=$request->except('admin_id');
+			$form=$request->except('admin_id', 'tags');
 			$shop->admin_id = $request->user()->id;
 			$shop->fill($form)->save();
+         $shop->tags()->attach(request()->tags);
 		}
 		return redirect()->route('admin.index');
 	}
@@ -75,10 +79,12 @@ class AdminController extends Controller {
 	}
 	public function edit(Request $request) {
 		$shop = Shop::find($request->id);
+      $tags = Tag::all();
 		if($shop->image_url) {
 			$shop->image_url = str_replace('public/', 'storage/', $shop->image_url);
 		}
-		return view('admin.edit', ['shop'=>$shop]);
+		return view('admin.edit', ['shop'=>$shop])
+         ->with('tags', $tags);
 	}
 	public function update(Request $request, $id) {
 		$this->validate($request, Shop::$rules);
@@ -93,9 +99,11 @@ class AdminController extends Controller {
 				$shop->URL = $request->URL;
 				$shop->image_url = $request->image_url->storeAs('public/shop_images', rand());
 				$shop->save();
+            $shop->tags()->sync(request()->tags);
 			} else {
-				$form=$request->except('image_url');
+				$form=$request->except('image_url', 'tags');
 				$shop->fill($form)->save();
+            $shop->tags()->sync(request()->tags);
 			}
 		}
 		return redirect()->route('admin.index');
