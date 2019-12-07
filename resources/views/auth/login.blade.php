@@ -55,12 +55,24 @@
                                     Login
                                 </button>
 
+
+<!--
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
+--!>
                             </div>
                         </div>
                     </form>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+								<a class="move_page btn btn-primary" href ="{{route('twitter.login')}}" role="button">twitter login</a>
+							</div>
+						</div>
+
+
+
 			<div class="col-md-8 col-md-offset-4">
 			    <form class="form-horizontal form-testLogin" method="POST" action="{{ route('login') }}">
 				{{ csrf_field() }}

@@ -14,8 +14,10 @@
 		<div class="panel-body">
 			<div class="box-list">
 				<div class="detail_user">
-					@if($user->image_url == null)
+					@if($user->image_url == null && $user->avatar == null)
 						<img src="../../storage/user_images/no_image_user.jpg">
+					@elseif($user->avatar)
+						<img src="{{$user->avatar}}">
 					@else
 						<img src="../../{{$user->image_url}}">
 					@endif
@@ -68,7 +70,6 @@
 							<small><a href="{{route('shop.detail', [$review->shop_id])}}">{{$review->name}}</a></small>
 						</div>
 						<div class="text_part">
-							<p>{{$review->id}}</p>
 							<p>{{$review->title}}</p>
 							<p>{{$review->review}}</p>
 							<small>{{$review->created_at}}</small>
